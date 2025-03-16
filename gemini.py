@@ -28,7 +28,7 @@ command = '''
 '''
 
 # Create a Gemini model instance
-model = genai.GenerativeModel("gemini-pro")
+model = genai.GenerativeModel("gemini-1.5-pro-latest")
 
 # Generate a response based on chat history
 response = model.generate_content(f"""
