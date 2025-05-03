@@ -1,14 +1,9 @@
 import google.generativeai as genai
 import os
 from dotenv import load_dotenv
-
-# Load environment variables from .env file
 load_dotenv()
 api_key = os.getenv("GEMINI_AI_BOT_KEY")
-
-# Configure Gemini API
 genai.configure(api_key=api_key)
-
 command = '''
 [12:59 AM, 3/15/2025] Me: Ok bro
 [12:59 AM, 3/15/2025] GKD: Or kya kr rha h?
@@ -26,20 +21,12 @@ command = '''
 [2:39 PM, 3/16/2025] GKD: Koi assignment wagerah mila h kya?
 [2:59 PM, 3/16/2025] Me: Nahi
 '''
-
-# Create a Gemini model instance
 model = genai.GenerativeModel("gemini-1.5-pro-latest")
-
-# Generate a response based on chat history
 response = model.generate_content(f"""
 You are 'Me' in this chat, a student discussing assignments, lab work, and general topics with a friend named 'GKD'. 
 Analyze the chat history and generate a natural response that fits the ongoing conversation.
-
 Here is the chat history:
 {command}
-
 Now generate a response in a natural, friendly, and conversational tone.
 """)
-
-# Print the response from Gemini
 print(response.text)
